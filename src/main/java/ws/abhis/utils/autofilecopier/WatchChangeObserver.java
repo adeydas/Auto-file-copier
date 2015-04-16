@@ -38,13 +38,13 @@ public class WatchChangeObserver implements PropertyChangeListener {
                     if (p.toString().contains(changedFile.toString())) {
                         System.out.println("File changed " + changedFile.toString());
                         System.out.println("Comparing with filter " + p.toString());
-                        Utils.copyFiles(p, Paths.get(destDir + File.separator + changedFile.toString()));
+                        Utils.copyFiles(Paths.get( newVal.getDirPath().toString() + File.separator + changedFile.toString() ), Paths.get(destDir + File.separator + changedFile.toString()));
                         System.out.println("Copied " + changedFile.toString() + ". Timestamp:" + newVal.getTimeStamp());
                     }
                 }
             } else {
                 System.out.println("File changed " + changedFile.toString());
-                Utils.copyFiles(changedFile, destDir);
+                Utils.copyFiles(Paths.get( newVal.getDirPath().toString() + File.separator + changedFile.toString() ), Paths.get(destDir + File.separator + changedFile.toString()));
                 System.out.println("Copied " + changedFile.toString() + ". Timestamp:" + newVal.getTimeStamp());
             }
 
